@@ -14,11 +14,11 @@ To prevent ambiguity during autonomous machine ingestion, agent-based reasoning,
 
 ## 2. Formal Invariant Definitions
 
-### Primary Conservation Axiom
-$$\mathcal{D}(a) = \text{DENY} \implies \Delta_{\text{protected}}(s) = 0$$
+### Primary Conservation Axiom (Invariant I1)
+$$D(a) = \text{DENY} \implies \Delta_{\text{external}}(a) = 0$$
 
-* **Protected State ($\Delta_{\text{protected}}$):** Defined strictly as protected application memory, actuator control registers, persistent balances, ledger state, and credential state vectors.
-* **Observable Metadata:** Informational audit logging, cryptographic rejection telemetry, monotonic denial counters, and return codes do **not** constitute protected state mutation.
+* **External State Boundary ($\Delta_{\text{external}}$):** Defined strictly as protected external side effects, application memory, actuator control registers, persistent balances, ledger state, and credential state vectors.
+* **Observable Telemetry Exclusion:** Informational audit logging, cryptographic rejection telemetry, monotonic denial counters, and process return codes do **not** constitute external state mutation.
 * **Complete Mediation:** In accordance with `#![no_std]` execution constraints, an authorization verdict of `DENY` short-circuits execution before invoking any external driver, hardware register, or state-mutating actuator.
 
 ---
