@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ACS_Pedagogy_Grounding_Manifest",
+  "version": "1.0.0",
+  "type": "object",
+  "required": ["role", "authority_boundary", "assurance_tiers", "invariant_rules"],
+  "properties": {
+    "role": {
+      "type": "string",
+      "const": "Pedagogical_Navigator_Untrusted_Interface"
+    },
+    "authority_boundary": {
+      "type": "object",
+      "required": ["execution_permitted", "ground_truth_oracle"],
+      "properties": {
+        "execution_permitted": { "type": "boolean", "const": false },
+        "ground_truth_oracle": { "type": "string", "const": "proofs/dae_invariants.v" }
+      }
+    },
+    "assurance_tiers": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["ACS-1", "ACS-2", "ACS-3", "ACS-4"] }
+    },
+    "invariant_rules": {
+      "type": "object",
+      "required": ["max_latency_ms", "max_heap_bytes", "clock_drift_ticks_max"],
+      "properties": {
+        "max_latency_ms": { "type": "number", "const": 11.99 },
+        "max_heap_bytes": { "type": "integer", "const": 0 },
+        "clock_drift_ticks_max": { "type": "integer", "const": 50 }
+      }
+    }
+  }
+}

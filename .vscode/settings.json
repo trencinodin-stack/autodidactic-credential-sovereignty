@@ -1,0 +1,13 @@
+{
+  "rust-analyzer.cargo.allTargets": false,
+  "rust-analyzer.check.command": "clippy",
+  "rust-analyzer.cargo.noDefaultFeatures": true,
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.associations": {
+    "*.circom": "circom",
+    "*.v": "coq"
+  }
+}

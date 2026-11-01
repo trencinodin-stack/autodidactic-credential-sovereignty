@@ -1,0 +1,14 @@
+# Autodidactic Credential Sovereignty (ACS)
+> Canonical Standard: Epistemic Invariance & Autonomous Attestation
+> Upstream Core: arcstone-continuity-core (v1.3.1-EXEC)
+> Operating Paradigm: C_ops == 0 | tau_override <= 11.99ms | M_alloc == 0
+
+## Core Repositories & Specifications
+- Specification Suite: SPEC_01 through SPEC_09 (Zenodo DOI: 10.5281/zenodo.23371581)
+- Master Hash Anchor: A-77-DELTA-SHIELD-LOCKED
+- Production Edge Airlock: https://gate.arcstoneos.com
+
+## Axiomatic Architecture
+- Invariant State Conservation: D(a) = DENY ==> Delta_external(a) = 0
+- Poset Dominance Lattice:
+  POSIX 40 (BREACH) > POSIX 32 (REFUSAL) > POSIX 30 (MEMORY) > POSIX 12 (PWC) > POSIX 10 (FREEZE) > POSIX 0 (PASS)

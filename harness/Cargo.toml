@@ -1,0 +1,10 @@
+[package]
+name = "acs-harness"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[lib]
+name = "acs_harness"
+path = "src/lib.rs"

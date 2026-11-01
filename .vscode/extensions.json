@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "rust-lang.rust-analyzer",
+    "coq-community.vscoq",
+    "iden3.circom",
+    "tamasfe.even-better-toml",
+    "github.vscode-github-actions"
+  ]
+}
