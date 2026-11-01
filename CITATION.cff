@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you utilize this reference substrate or formal proof suite in your research or systems, please cite it as below."
+title: "Autodidactic Credential Sovereignty: A Machine-Checked, Multi-Tier Substrate for Autonomous Technical Assurance"
+authors:
+  - family-names: "Tuohy"
+    given-names: "Jesse"
+    orcid: "https://orcid.org/0009-0004-9456-4241"
+    affiliation: "Arcstone Adaptive Science Systems, Inc."
+version: "v1.0.0"
+date-released: "2026-11-01"
+license: "MIT"
+repository-code: "https://github.com/trencinodin-stack/autodidactic-credential-sovereignty"
+url: "https://admissibilityscience.com"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.23371581"
+    description: "Academic Realization Suite (ARC-SPEC-2026-EDU-01..09)"
+  - type: other
+    value: "A-77-DELTA-SHIELD-LOCKED"
+    description: "Master Hash Anchor"
+keywords:
+  - "formal verification"
+  - "coq"
+  - "no-std rust"
+  - "zero-knowledge"
+  - "circom"
+  - "credentialing"
