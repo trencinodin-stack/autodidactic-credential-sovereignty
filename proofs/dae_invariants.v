@@ -1,6 +1,6 @@
 (** Formal Machine-Checked Invariants for DAE / ACS **)
 Require Import Coq.Init.Nat.
-Require Import Coq.Lists.List.
+Require Import Coq.Arith.Arith.
 
 Inductive PosetLevel : Type :=
   | PassLevel   : PosetLevel (* POSIX 0 *)
@@ -34,8 +34,5 @@ Theorem fail_closed_dominance : forall p1 p2 : PosetLevel,
   poset_val (poset_supremum p1 p2) >= poset_val p1.
 Proof.
   intros p1 p2.
-  unfold poset_supremum.
-  destruct (Nat.leb (poset_val p1) (poset_val p2)) eqn:Hleb.
-  - apply Nat.leb_le in Hleb. exact Hleb.
-  - apply Nat.le_refl.
+  destruct p1; destruct p2; simpl; auto.
 Qed.
