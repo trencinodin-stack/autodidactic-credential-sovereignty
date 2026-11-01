@@ -36,21 +36,25 @@ jobs:
       - name: Verify Core Invariants (Coq & Harness)
         run: |
           coqc proofs/dae_invariants.v
+          coqtop -batch -l proofs/dae_invariants.v -eval "Print Assumptions." || true
           cargo test --manifest-path harness/Cargo.toml --release
 
       - name: Verify Quantitative Finance Domain
         run: |
           coqc domains/quant-finance/proofs/quant_invariants.v
+          coqtop -batch -l domains/quant-finance/proofs/quant_invariants.v -eval "Print Assumptions." || true
           cargo test --manifest-path domains/quant-finance/harness/Cargo.toml --release
 
       - name: Verify Aerospace Avionics Domain
         run: |
           coqc domains/aerospace-avionics/proofs/avionics_invariants.v
+          coqtop -batch -l domains/aerospace-avionics/proofs/avionics_invariants.v -eval "Print Assumptions." || true
           cargo test --manifest-path domains/aerospace-avionics/harness/Cargo.toml --release
 
       - name: Verify Cryptographic Protocols Domain
         run: |
           coqc domains/crypto-protocols/proofs/crypto_invariants.v
+          coqtop -batch -l domains/crypto-protocols/proofs/crypto_invariants.v -eval "Print Assumptions." || true
           cargo test --manifest-path domains/crypto-protocols/harness/Cargo.toml --release
 
       - name: Verify ACS-4 ZK Circuit Compilation
