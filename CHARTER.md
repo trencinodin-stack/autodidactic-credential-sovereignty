@@ -123,7 +123,7 @@ Eliminating priority inversions, signal alias collisions, and conditional branch
 3. **Endofunctorial Isolation of Runtime Yields:** Operational scheduling pauses, such as `POSIX 10 (FREEZE)`, exist strictly outside the essential image of the translation bridge:
 
 $$
-\text{POSIX } 10 \notin \operatorname{Im}(\Phi) = \{0, 12, 30, 32, 40\}
+\text{POSIX } 10 \notin \text{Im}(\Phi) = \{0, 12, 30, 32, 40\}
 $$
 
 External actors cannot inject a permanent suspension or denial-of-service into the engine. `FREEZE` is an internal rate-limiting yield reserved strictly for the hardware scheduler.
