@@ -1,4 +1,4 @@
-name: Substrate Invariant CI (ACS-2 / ACS-3 Autograder)
+name: Substrate Invariant CI (ACS-2 / ACS-3 / ACS-4 Autograder)
 
 on:
   push:
@@ -21,6 +21,18 @@ jobs:
       - name: Install Coq Proof Checker
         run: sudo apt-get update && sudo apt-get install -y --no-install-recommends coq
 
+      - name: Setup Node & Install Circom
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Circom Compiler & Dependencies
+        run: |
+          npm install circomlib
+          curl -L https://github.com/iden3/circom/releases/latest/download/circom-linux-amd64 -o /usr/local/bin/circom
+          chmod +x /usr/local/bin/circom
+          circom --version
+
       - name: Verify Core Invariants (Coq & Harness)
         run: |
           coqc proofs/dae_invariants.v
@@ -40,6 +52,10 @@ jobs:
         run: |
           coqc domains/crypto-protocols/proofs/crypto_invariants.v
           cargo test --manifest-path domains/crypto-protocols/harness/Cargo.toml --release
+
+      - name: Verify ACS-4 ZK Circuit Compilation
+        run: |
+          circom zk/dae_verifier.circom --r1cs --wasm --sym -o zk/ -l node_modules
 
       - name: Generate Challenge Nonce & Evidence Record
         run: |
