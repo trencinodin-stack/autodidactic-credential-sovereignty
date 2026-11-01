@@ -19,28 +19,28 @@ template DAEVerifier() {
 
     // --- 1. Freshness & Telemetry Commitment ---
     component telemetryHasher = Poseidon(5);
-    telemetryHasher.inputs[0] <-- binaryDigest;
-    telemetryHasher.inputs[1] <-- challengeNonce;
-    telemetryHasher.inputs[2] <-- measuredLatencyNs;
-    telemetryHasher.inputs[3] <-- measuredAllocBytes;
-    telemetryHasher.inputs[4] <-- executionSalt;
+    telemetryHasher.inputs[0] <== binaryDigest;
+    telemetryHasher.inputs[1] <== challengeNonce;
+    telemetryHasher.inputs[2] <== measuredLatencyNs;
+    telemetryHasher.inputs[3] <== measuredAllocBytes;
+    telemetryHasher.inputs[4] <== executionSalt;
 
     telemetryHasher.out === expectedTelemetryCommitment;
 
     // --- 2. Invariant Boundary Checks ---
     component allocCheck = LessEqThan(64);
-    allocCheck.in[0] <-- measuredAllocBytes;
-    allocCheck.in[1] <-- maxAllocBytes;
+    allocCheck.in[0] <== measuredAllocBytes;
+    allocCheck.in[1] <== maxAllocBytes;
     allocCheck.out === 1;
 
     component latencyCheck = LessEqThan(64);
-    latencyCheck.in[0] <-- measuredLatencyNs;
-    latencyCheck.in[1] <-- maxLatencyNs;
+    latencyCheck.in[0] <== measuredLatencyNs;
+    latencyCheck.in[1] <== maxLatencyNs;
     latencyCheck.out === 1;
 
     component driftCheck = LessEqThan(32);
-    driftCheck.in[0] <-- measuredClockDriftTicks;
-    driftCheck.in[1] <-- 50;
+    driftCheck.in[0] <== measuredClockDriftTicks;
+    driftCheck.in[1] <== 50;
     driftCheck.out === 1;
 }
 
