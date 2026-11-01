@@ -1,14 +1,18 @@
 # Autodidactic Credential Sovereignty (ACS)
+> Canonical Field Root: https://admissibilityscience.com
 > Canonical Standard: Epistemic Invariance & Autonomous Attestation
 > Upstream Core: arcstone-continuity-core (v1.3.1-EXEC)
-> Operating Paradigm: C_ops == 0 | tau_override <= 11.99ms | M_alloc == 0
+> Operating Paradigm: C_ops == 0 | tau_override <= 11.99ms | M_alloc == 0 | S_max <= 4096B
+> Normative Specification: /SPECIFICATION.md
 
 ## Core Repositories & Specifications
-- Specification Suite: SPEC_01 through SPEC_09 (Zenodo DOI: 10.5281/zenodo.23371581)
+- Specification Suite: ARC-SPEC-2026-EDU-01 through EDU-09 (Zenodo DOI: 10.5281/zenodo.23371581)
 - Master Hash Anchor: A-77-DELTA-SHIELD-LOCKED
+- Normative Errata Overlay: ARC-ERR-2026-001 (Zenodo DOI: 10.5281/zenodo.23069559)
 - Production Edge Airlock: https://gate.arcstoneos.com
 
 ## Axiomatic Architecture
-- Invariant State Conservation: D(a) = DENY ==> Delta_external(a) = 0
-- Poset Dominance Lattice:
-  POSIX 40 (BREACH) > POSIX 32 (REFUSAL) > POSIX 30 (MEMORY) > POSIX 12 (PWC) > POSIX 10 (FREEZE) > POSIX 0 (PASS)
+- Invariant State Conservation (I1): D(a) = DENY => Delta_external(a) = 0
+- 5-Element Pre-Ingress Lattice: POSIX 40 (BREACH) > POSIX 32 (REFUSAL) > POSIX 30 (CORRUPT) > POSIX 12 (PWC) > POSIX 0 (PASS)
+- Endofunctorial Yield Invariant: POSIX 10 (FREEZE) operates strictly as an internal runtime scheduling yield in E (tau_override <= 11.99ms) outside the essential image Im(Phi).
+- Four-Tier Model: ACS-1 (Schemas) -> ACS-2 (#![no_std] Harness) -> ACS-3 (Coq Transition Proofs) -> ACS-4 (Circom Groth16 ZK)
