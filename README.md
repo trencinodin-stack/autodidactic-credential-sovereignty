@@ -8,6 +8,18 @@ ACS explores an alternative credentialing model: anchoring engineering claims di
 
 ---
 
+## Academic Provenance & Cryptographic Anchor
+
+This repository is the canonical open reference realization of the Deterministic Admissibility Engineering (DAE) academic specification suite (`ARC-SPEC-2026-EDU-01..09`), anchored within the Arcstone research ecosystem.
+
+* **Master Hash Anchor:** `A-77-DELTA-SHIELD-LOCKED`
+* **Canonical Specification Root:** [admissibilityscience.com](https://admissibilityscience.com)
+* **Academic Realization Suite (Zenodo DOI):** [10.5281/zenodo.23371581](https://doi.org/10.5281/zenodo.23371581)
+* **Layer 0 Primary Authority (Zenodo DOI):** [10.5281/zenodo.22665852](https://doi.org/10.5281/zenodo.22665852)
+* **Normative Errata Specification:** [10.5281/zenodo.23069559](https://doi.org/10.5281/zenodo.23069559) (`ARC-ERR-2026-001`)
+
+---
+
 ## The 4-Tier Credential Assurance Model
 
 1. **ACS-1 (Specification Schemas):** Syntactic adherence to domain schemas (`schema/*_pedagogy.json`), governing problem formulation, unit conventions, and physical/operational bounds.
