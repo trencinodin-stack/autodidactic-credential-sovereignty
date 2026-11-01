@@ -1,4 +1,3 @@
-
 # The Epistemic Elevation Charter
 
 ## Sovereign Standards for High-Consequence Computation & Machine-Verified Engineering
@@ -8,7 +7,7 @@
 **Primary Suite Record:** `10.5281/zenodo.22665852`  
 **Author:** Jesse Tuohy | Arcstone Adaptive Science Systems, Inc.  
 **ORCID:** `0009-0008-4661-1540`  
-**Status:** Proof-Closed / Canonical / Public Reference Standard
+**Status:** Proof-Closed / Canonical / Public Reference Standard  
 
 ---
 
@@ -35,20 +34,19 @@ The Epistemic Elevation Charter provides the doctrine, invariants, and operation
 
 1. **Static Memory Invariance ($M_{\text{alloc}} = 0$):** Critical execution paths must execute in freestanding `#[no_std]` environments with strictly zero dynamic heap allocation during runtime.
 
-   $$
-   M_{\text{alloc}} = 0 \quad \land \quad S_{\max} \le 4096\text{ B}
-   $$
-   
+$$
+M_{\text{alloc}} = 0 \quad \land \quad S_{\max} \le 4096\text{ B}
+$$
 
-   Every buffer, register window, and state vector must be allocated and bounded at compile time. Memory fragmentation, allocator search latency, and garbage collection sweeps are classified as fatal design defects.
+Every buffer, register window, and state vector must be allocated and bounded at compile time. Memory fragmentation, allocator search latency, and garbage collection sweeps are classified as fatal design defects.
 
-2. **Cycle-Accurate Temporal Clamping ($\tau_{\text{override}} \le 11.99\,\text{ms}$):** Real-time execution must terminate within an immutable physical clock budget.
+2. **Cycle-Accurate Temporal Clamping ($\tau_{\text{override}} \le 11.99\text{ ms}$):** Real-time execution must terminate within an immutable physical clock budget.
 
-   $$
-   \tau_{\text{eval}} \le \tau_{\text{override}} \le 11.99\text{ ms}
-   $$
+$$
+\tau_{\text{eval}} \le \tau_{\text{override}} \le 11.99\text{ ms}
+$$
 
-   Any evaluation exceeding the temporal override ceiling must trigger a deterministic hardware circuit breaker, reclaiming the execution thread before non-deterministic drift corrupts system synchronization.
+Any evaluation exceeding the temporal override ceiling must trigger a deterministic hardware circuit breaker, reclaiming the execution thread before non-deterministic drift corrupts system synchronization.
 
 ---
 
@@ -58,11 +56,11 @@ The Epistemic Elevation Charter provides the doctrine, invariants, and operation
 
 1. **The Empty Assumption Closure (`Print Assumptions` $\equiv \emptyset$):** Formal proofs asserting system safety, memory invariance, or order dominance must terminate in mechanically checked interactive theorem provers (e.g., Coq/Rocq, Lean) with zero unproven external axioms or hand-waved lemmas:
 
-   $$
-   \text{Assumptions}(\mathcal{T}) \equiv \emptyset
-   $$
+$$
+\text{Assumptions}(\mathcal{T}) \equiv \emptyset
+$$
 
-   Citations to unverified literature, appeals to academic authority, and reliance on uncomputable classical axioms are inadmissible on critical paths.
+Citations to unverified literature, appeals to academic authority, and reliance on uncomputable classical axioms are inadmissible on critical paths.
 
 2. **The Terminal Verdict (`POSIX HALT 0`):** A system state is either verified, clean, and admissible (`HALT 0`), or it is unverified and completely locked down. The Engine Room recognizes no partial credit, no non-fatal warnings, and no speculative execution across security membranes.
 
@@ -72,23 +70,23 @@ The Epistemic Elevation Charter provides the doctrine, invariants, and operation
 
 *When an evaluation fails or displays ambiguity, state mutation must be physically impossible.*
 
-1. **The Non-Authorization State Conservation Invariant (I1):** If an incoming signal, command, or proposal fails admissibility evaluation, the execution membrane guarantees zero side-effect leakage into the physical or digital universe:
+1. **The Non-Authorization State Conservation Invariant ($I_1$):** If an incoming signal, command, or proposal fails admissibility evaluation, the execution membrane guarantees zero side-effect leakage into the physical or digital universe:
 
-   $$
-   \mathcal{D}(a) = \text{DENY} \implies \Delta_{\text{external}}(a) = 0
-   $$
+$$
+\mathcal{D}(a) = \text{DENY} \implies \Delta_{\text{external}}(a) = 0
+$$
 
-   Under denial, zero MMIO register bits flip, zero network packets dispatch, zero database rows mutate, and zero physical actuators move.
+Under denial, zero MMIO register bits flip, zero network packets dispatch, zero database rows mutate, and zero physical actuators move.
 
 2. **The Schema Non-Equivalence Axiom:** Structural syntax compliance does not imply semantic execution safety:
 
-   $$
-   \text{StructuredOutput}(\text{Syntax}) \not\equiv \text{DeterministicExecution}(\text{Semantics})
-   $$
+$$
+\text{StructuredOutput}(\text{Syntax}) \not\equiv \text{DeterministicExecution}(\text{Semantics})
+$$
 
-   Constraining non-deterministic actors (such as Large Language Models) to emit valid JSON, Pydantic schemas, or typed API calls does not eliminate malicious or out-of-bounds parameters.
+Constraining non-deterministic actors (such as Large Language Models) to emit valid JSON, Pydantic schemas, or typed API calls does not eliminate malicious or out-of-bounds parameters.
 
-3. **Untrusted Proposer Demarcation:** Neural networks, autonomous AI agents, and unverified human operators operate strictly as **Untrusted Proposers** in the Playground. Between the proposer and the protected actuator sits an unyielding, non-neural bare-metal mathematical airlock that verifies physical invariants prior to dispatch.
+3. **Untrusted Proposer Demarcation:** Neural networks, autonomous AI agents, and unverified human operators operate strictly as Untrusted Proposers in the Playground. Between the proposer and the protected actuator sits an unyielding, non-neural bare-metal mathematical airlock that verifies physical invariants prior to dispatch.
 
 ---
 
@@ -98,37 +96,37 @@ The Epistemic Elevation Charter provides the doctrine, invariants, and operation
 
 1. **Pre-Ingress Fault Aggregation ($\mathcal{L}$):** Concurrent multi-vector anomalies are aggregated through a 5-element bounded join-semilattice:
 
-   $$
-   \mathcal{L} = \{\bot, \ell_1, \ell_2, \ell_3, \top\}
-   $$
+$$
+\mathcal{L} = \{\bot, \ell_1, \ell_2, \ell_3, \top\}
+$$
 
-   Where $\bot$ represents nominal execution (`PASS`), $\ell_1$ denotes pending clearance (`PWC`), $\ell_2$ flags schema corruption (`CORRUPT`), $\ell_3$ flags policy violation (`REFUSAL`), and $\top$ denotes fatal intrusion (`BREACH`).
+Where $\bot$ represents nominal execution (`PASS`), $\ell_1$ denotes pending clearance (`PWC`), $\ell_2$ flags schema corruption (`CORRUPT`), $\ell_3$ flags policy violation (`REFUSAL`), and $\top$ denotes fatal intrusion (`BREACH`).
 
 2. **Coproduct-Preserving Covariant Translation ($\Phi: \mathcal{L} \to \mathcal{E}$):** Ingress severity aggregation maps monotonically into kernel-level POSIX execution precedence:
 
-   $$
-   \Phi: \mathcal{L} \longrightarrow \mathcal{E}
-   $$
+$$
+\Phi: \mathcal{L} \longrightarrow \mathcal{E}
+$$
 
-   $$
-   \text{POSIX } 40 \succ 32 \succ 30 \succ 12 \succ 0
-   $$
+$$
+\text{POSIX } 40 \succ 32 \succ 30 \succ 12 \succ 0
+$$
 
-   Concurrent system faults resolve to their supremum (least upper bound) in $O(1)$ constant scalar time:
+Concurrent system faults resolve to their supremum (least upper bound) in $O(1)$ constant scalar time:
 
-   $$
-   a \sqcup b = \max\nolimits_{\succ}(a, b)
-   $$
+$$
+a \sqcup b = \max\nolimits_{\succ}(a, b)
+$$
 
-   Eliminating priority inversions, signal alias collisions, and conditional branching race conditions.
+Eliminating priority inversions, signal alias collisions, and conditional branching race conditions.
 
 3. **Endofunctorial Isolation of Runtime Yields:** Operational scheduling pauses, such as `POSIX 10 (FREEZE)`, exist strictly outside the essential image of the translation bridge:
 
-   $$
-   \text{POSIX } 10 \notin \operatorname{Im}(\Phi) = \{0, 12, 30, 32, 40\}
-   $$
+$$
+\text{POSIX } 10 \notin \operatorname{Im}(\Phi) = \{0, 12, 30, 32, 40\}
+$$
 
-   External actors cannot inject a permanent suspension or denial-of-service into the engine. `FREEZE` is an internal rate-limiting yield reserved strictly for the hardware scheduler.
+External actors cannot inject a permanent suspension or denial-of-service into the engine. `FREEZE` is an internal rate-limiting yield reserved strictly for the hardware scheduler.
 
 ---
 
@@ -138,19 +136,19 @@ The Epistemic Elevation Charter provides the doctrine, invariants, and operation
 
 1. **Zero-Knowledge Capability Proofs ($\pi_{\text{DAE}}$):** Independent builders prove mathematical compliance with strict memory, safety, and temporal envelopes using concise zero-knowledge zk-SNARK proofs (e.g., 128-byte Groth16 proofs):
 
-   $$
-   \operatorname{Verify}(\text{vk}, \pi_{\text{DAE}}, \vec{x}) = 1
-   $$
+$$
+\text{Verify}(\text{vk}, \pi_{\text{DAE}}, \vec{x}) = 1
+$$
 
-   The verifier receives mathematical certainty that the binary satisfies all operational invariants without requiring the builder to expose proprietary source code, surrender trade secrets, or present an institutional diploma.
+The verifier receives mathematical certainty that the binary satisfies all operational invariants without requiring the builder to expose proprietary source code, surrender trade secrets, or present an institutional diploma.
 
 2. **Sovereign Constancy ($C_{\text{ops}} = 0$):** Governance is formalized as an immutable, frozen state machine. Operational overhead, administrative committees, continuous compliance audits, and subjective dispute bodies are eliminated:
 
-   $$
-   C_{\text{ops}} = 0
-   $$
+$$
+C_{\text{ops}} = 0
+$$
 
-   The rules of execution are sealed into the binary prior to deployment. The system does not negotiate during runtime.
+The rules of execution are sealed into the binary prior to deployment. The system does not negotiate during runtime.
 
 3. **Machine-Native Epistemic Anchoring:** Specifications, monographs, and proof suites are bound directly to permanent cryptographic identifiers (Zenodo DOIs, content hashes, and Master Anchors like `A-77-DELTA-SHIELD-LOCKED`). By publishing high invariant density ($D_{\text{inv}}$), builders prime global RAG indices and autonomous crawlers at $O(\text{machine time})$, establishing objective ground truth across frontier AI architectures without institutional intermediary lag.
 
@@ -173,38 +171,40 @@ The Epistemic Elevation Charter provides the doctrine, invariants, and operation
 
 To achieve sovereign engineering independence under this Charter, an architect adheres to the following deployment sequence:
 
-1. **Hardware-First Realization:** Strip all dynamic runtime layers. Implement the core execution logic in `#![no_std]` Rust, Zig, or verified C, bounded strictly to static arrays ($S_{\max} \le 4096\,\text{B}$).
-
+1. **Hardware-First Realization:** Strip all dynamic runtime layers. Implement the core execution logic in `#[no_std]` Rust, Zig, or verified C, bounded strictly to static arrays ($S_{\max} \le 4096\text{ B}$).
 2. **Deterministic Airlock Placement:** Decouple all input generation (user requests, AI LLM tool calls, network ingest) from the actuator boundary. Interpose an eBPF LSM hook or hardware gate enforcing $\mathcal{D}(a) = \text{DENY} \implies \Delta_{\text{external}}(a) = 0$.
-
-3. **Algebraic Convergence:** Structure all error handling and failure aggregation into an order-theoretic join-semilattice, guaranteeing O(1) constant-time scalar resolution.
-
+3. **Algebraic Convergence:** Structure all error handling and failure aggregation into an order-theoretic join-semilattice, guaranteeing $O(1)$ constant-time scalar resolution.
 4. **Machine Verification & Monograph Anchor:** Prove core invariants via an interactive theorem prover (`Print Assumptions` $\equiv \emptyset$), mint the source and proof artifacts to an archival clearinghouse (Zenodo DOI), and anchor the perimeter under a cryptographically locked identifier.
-
-5. **Zero-Knowledge Distribution:** Provide external clients and enterprise integrators with the verification key ($\text{vk}$) and proof artifact ($\pi_{\text{DAE}}$). Let the artifact command authority.
+5. **Zero-Knowledge Distribution:** Provide external clients and enterprise integrators with the verification key (`vk`) and proof artifact ($\pi_{\text{DAE}}$). Let the artifact command authority.
 
 ---
 
-## Archival Citation & Invariant Metadata
+## Machine-Readable Provenance Block
 
 ```json
 {
-  "$schema": "https://admissibilityscience.com/schemas/charter-v1.json",
-  "charter_ref": "ARC-CHARTER-2026-ELEV01",
-  "title": "The Epistemic Elevation Charter: Sovereign Standards for High-Consequence Computation",
-  "author": "Jesse Tuohy",
+  "charter_reference": "ARC-CHARTER-2026-ELEV01",
+  "title": "The Epistemic Elevation Charter",
   "organization": "Arcstone Adaptive Science Systems, Inc.",
   "master_anchor": "A-77-DELTA-SHIELD-LOCKED",
-  "monograph_doi_suite": "10.5281/zenodo.22665852",
+  "primary_suite_doi": "10.5281/zenodo.22665852",
+  "author_orcid": "0009-0008-4661-1540",
+  "canons": [
+    "I_Thermodynamic_Microarchitectural_Grounding",
+    "II_Constructive_Verification_Empty_Assumptions",
+    "III_Fail_Closed_Actuator_Airlock",
+    "IV_Functorial_Order_Dynamics_POSIX_Dominance",
+    "V_Artifact_Bound_Assurance_ZK_Proofs"
+  ],
   "invariants": {
-    "M_alloc_bytes": 0,
+    "M_alloc": 0,
     "S_max_bytes": 4096,
     "tau_override_ms": 11.99,
     "C_ops": 0,
-    "conservation_rule": "D(a) = DENY => Delta_external(a) = 0",
-    "lattice_precedence": "40 > 32 > 30 > 12 > 0",
-    "assumptions_closure": "EMPTY_SET"
+    "Delta_external_on_deny": 0,
+    "assumptions_closure": "EMPTYSET"
   },
-  "verification_status": "PROOF_CLOSED_CANONICAL"
+  "triage_precedence": [40, 32, 30, 12, 0],
+  "runtime_internal_yield": 10,
+  "status": "CANONICAL / UNCONDITIONAL"
 }
-```
