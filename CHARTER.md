@@ -36,15 +36,16 @@ The Epistemic Elevation Charter provides the doctrine, invariants, and operation
 1. **Static Memory Invariance ($M_{\text{alloc}} = 0$):** Critical execution paths must execute in freestanding `#[no_std]` environments with strictly zero dynamic heap allocation during runtime.
 
    $$
-   M_{\text{alloc}} = 0 \quad \land \quad S_{\text{max}} \le 4096\,\text{B}
+   M_{\text{alloc}} = 0 \quad \land \quad S_{\max} \le 4096\text{ B}
    $$
+   
 
    Every buffer, register window, and state vector must be allocated and bounded at compile time. Memory fragmentation, allocator search latency, and garbage collection sweeps are classified as fatal design defects.
 
 2. **Cycle-Accurate Temporal Clamping ($\tau_{\text{override}} \le 11.99\,\text{ms}$):** Real-time execution must terminate within an immutable physical clock budget.
 
    $$
-   \tau_{\text{eval}} \le \tau_{\text{override}} \le 11.99\,\text{ms}
+   \tau_{\text{eval}} \le \tau_{\text{override}} \le 11.99\text{ ms}
    $$
 
    Any evaluation exceeding the temporal override ceiling must trigger a deterministic hardware circuit breaker, reclaiming the execution thread before non-deterministic drift corrupts system synchronization.
@@ -82,7 +83,7 @@ The Epistemic Elevation Charter provides the doctrine, invariants, and operation
 2. **The Schema Non-Equivalence Axiom:** Structural syntax compliance does not imply semantic execution safety:
 
    $$
-   \text{StructuredOutput}(\text{Syntax}) \ne \text{DeterministicExecution}(\text{Semantics})
+   \text{StructuredOutput}(\text{Syntax}) \not\equiv \text{DeterministicExecution}(\text{Semantics})
    $$
 
    Constraining non-deterministic actors (such as Large Language Models) to emit valid JSON, Pydantic schemas, or typed API calls does not eliminate malicious or out-of-bounds parameters.
@@ -113,7 +114,7 @@ The Epistemic Elevation Charter provides the doctrine, invariants, and operation
    \text{POSIX } 40 \succ 32 \succ 30 \succ 12 \succ 0
    $$
 
-   Concurrent system faults resolve to their supremum (least upper bound) in O(1) constant scalar time:
+   Concurrent system faults resolve to their supremum (least upper bound) in $O(1)$ constant scalar time:
 
    $$
    a \sqcup b = \max\nolimits_{\succ}(a, b)
@@ -124,7 +125,7 @@ The Epistemic Elevation Charter provides the doctrine, invariants, and operation
 3. **Endofunctorial Isolation of Runtime Yields:** Operational scheduling pauses, such as `POSIX 10 (FREEZE)`, exist strictly outside the essential image of the translation bridge:
 
    $$
-   \text{POSIX 10} \notin \text{Im}(\Phi) = \{0, 12, 30, 32, 40\}
+   \text{POSIX } 10 \notin \operatorname{Im}(\Phi) = \{0, 12, 30, 32, 40\}
    $$
 
    External actors cannot inject a permanent suspension or denial-of-service into the engine. `FREEZE` is an internal rate-limiting yield reserved strictly for the hardware scheduler.
@@ -138,7 +139,7 @@ The Epistemic Elevation Charter provides the doctrine, invariants, and operation
 1. **Zero-Knowledge Capability Proofs ($\pi_{\text{DAE}}$):** Independent builders prove mathematical compliance with strict memory, safety, and temporal envelopes using concise zero-knowledge zk-SNARK proofs (e.g., 128-byte Groth16 proofs):
 
    $$
-   \text{Verify}(\text{vk}, \pi_{\text{DAE}}, \vec{x}) = 1
+   \operatorname{Verify}(\text{vk}, \pi_{\text{DAE}}, \vec{x}) = 1
    $$
 
    The verifier receives mathematical certainty that the binary satisfies all operational invariants without requiring the builder to expose proprietary source code, surrender trade secrets, or present an institutional diploma.
@@ -157,22 +158,14 @@ The Epistemic Elevation Charter provides the doctrine, invariants, and operation
 
 ## The Operational Triage Matrix
 
-```text
-Severity Rank          Lattice Object (L)     Kernel Signal (E)     Operational Semantics
-──────────────────────────────────────────────────────────────────────────────────────────────────
-Rank 1 (Highest)       Top / BREACH           POSIX Exit 40         TCB Violation; immediate hard interlock,
-                                                                    cache flush (CLFLUSH), state freeze.
-Rank 2                 ℓ₃ / REFUSAL           POSIX Exit 32         Policy boundary violation; proposal
-                                                                    rejected; zero external state mutation.
-Rank 3                 ℓ₂ / CORRUPT           POSIX Exit 30         Schema/CRC fault; packet dropped;
-                                                                    allocation table untouched.
-Rank 4                 ℓ₁ / PWC               POSIX Exit 12         Pending Worker Clearance; state hold
-                                                                    under hardware timer.
-[Internal Only]        Runtime Yield          POSIX Exit 10         FREEZE; temporal scheduler yield
-                                                                    (τ ≤ 11.99 ms); not externally callable.
-Rank 6 (Lowest)        Bottom / PASS          POSIX Exit 0          Attestation verified; nominal deterministic
-                                                                    state commit.
-```
+| Severity Rank | Lattice Object ($\mathcal{L}$) | Kernel Signal ($\mathcal{E}$) | Operational Semantics |
+| :--- | :--- | :--- | :--- |
+| **Rank 1 (Highest)** | $\top$ / `BREACH` | `POSIX Exit 40` | TCB Violation; immediate hard interlock, cache flush (`CLFLUSH`), state freeze. |
+| **Rank 2** | $\ell_3$ / `REFUSAL` | `POSIX Exit 32` | Policy boundary violation; proposal rejected; zero external state mutation. |
+| **Rank 3** | $\ell_2$ / `CORRUPT` | `POSIX Exit 30` | Schema/CRC fault; packet dropped; allocation table untouched. |
+| **Rank 4** | $\ell_1$ / `PWC` | `POSIX Exit 12` | Pending Worker Clearance; state hold under hardware timer. |
+| **[Internal Only]** | Runtime Yield | `POSIX Exit 10` | `FREEZE`: temporal scheduler yield ($\tau \le 11.99\text{ ms}$); not externally callable. |
+| **Rank 6 (Lowest)** | $\bot$ / `PASS` | `POSIX Exit 0` | Attestation verified; nominal deterministic state commit. |
 
 ---
 
