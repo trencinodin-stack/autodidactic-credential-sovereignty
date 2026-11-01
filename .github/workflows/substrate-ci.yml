@@ -19,11 +19,12 @@ jobs:
           targets: thumbv7em-none-eabihf, x86_64-unknown-none
 
       - name: Install Coq Proof Checker
-        run: sudo apt-get update && sudo apt-get install -y coq
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends coq
 
       - name: Verify Formal Proofs (ACS-3 / 0-Admitted Check)
         run: |
           coqc proofs/dae_invariants.v
+          # Use grep with || true to prevent set -e abort when no admitted axioms exist
           if grep -E "Admitted\.|Axiom\." proofs/dae_invariants.v; then
             echo "Formal verification failed: Admitted statements detected."
             exit 1
