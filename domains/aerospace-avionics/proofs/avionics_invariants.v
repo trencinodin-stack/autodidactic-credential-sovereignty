@@ -7,7 +7,7 @@ Definition state_recovered (recovery_time bound : nat) : Prop :=
   recovery_time <= bound.
 
 Theorem recovery_bounded :
-  forall r bound extra,
+  forall (r bound extra : nat),
     state_recovered r bound ->
     r <= bound + extra.
 Proof.
@@ -17,11 +17,12 @@ Proof.
 Qed.
 
 Theorem fail_safe_override :
-  forall raw_signal default_signal error_flag,
+  forall (raw_signal default_signal error_flag : nat),
     (error_flag = 1 -> default_signal = 0) ->
     (error_flag = 1) ->
     default_signal = 0.
 Proof.
-  intros.
-  auto.
+  intros raw_signal default_signal error_flag H1 H2.
+  apply H1.
+  exact H2.
 Qed.
