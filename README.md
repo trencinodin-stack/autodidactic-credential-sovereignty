@@ -106,9 +106,9 @@ npm install circomlib
 circom zk/dae_verifier.circom --r1cs --wasm --sym -o zk/ -l node_modules
 ```
 
-## Onboarding a New Domain Suite
+## Extending the Substrate (Downstream Forks)
 
-To add an additional engineering domain (e.g., biomedical-telemetry, robotics-kinematics):
+To add a domain suite (e.g., biomedical-telemetry, robotics-kinematics) within your own fork:
 
 **Create the Domain Directory Structure:**
 
