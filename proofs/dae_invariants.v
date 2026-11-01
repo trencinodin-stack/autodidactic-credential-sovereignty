@@ -1,6 +1,7 @@
 (** Formal Machine-Checked Invariants for DAE / ACS **)
 Require Import Coq.Init.Nat.
 Require Import Coq.Arith.Arith.
+Require Import Coq.micromega.Lia.
 
 Inductive PosetLevel : Type :=
   | PassLevel   : PosetLevel (* POSIX 0 *)
@@ -34,5 +35,5 @@ Theorem fail_closed_dominance : forall p1 p2 : PosetLevel,
   poset_val (poset_supremum p1 p2) >= poset_val p1.
 Proof.
   intros p1 p2.
-  destruct p1; destruct p2; simpl; auto.
+  destruct p1; destruct p2; simpl; lia.
 Qed.
