@@ -1,0 +1,8 @@
+[package]
+name = "acs-quant-harness"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "acs_quant_harness"
+path = "src/lib.rs"

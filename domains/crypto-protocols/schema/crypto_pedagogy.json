@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ACS_Crypto_Protocols_Pedagogy_Manifest",
+  "version": "1.0.0",
+  "domain": "Cryptographic_Protocols_and_State_Machines",
+  "invariants": {
+    "zero_reentrancy_violation": true,
+    "state_conservation_exact": true,
+    "replay_nonce_unique": true
+  }
+}

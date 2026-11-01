@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ACS_Aerospace_Avionics_Pedagogy_Manifest",
+  "version": "1.0.0",
+  "domain": "Aerospace_Flight_Avionics",
+  "invariants": {
+    "max_recovery_window_ms": 30,
+    "max_dynamic_alloc_bytes": 0,
+    "telemetry_starvation_ticks_max": 3
+  }
+}

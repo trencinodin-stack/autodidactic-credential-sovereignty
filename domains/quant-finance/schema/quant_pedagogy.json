@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ACS_Quant_Finance_Pedagogy_Manifest",
+  "version": "1.0.0",
+  "domain": "Quantitative_Finance_High_Frequency_Trading",
+  "invariants": {
+    "max_tick_to_trade_ns": 450,
+    "max_drawdown_basis_points": 150,
+    "balance_conservation_enforced": true
+  }
+}
