@@ -20,6 +20,20 @@ This repository is the canonical open reference realization of the Deterministic
 
 ---
 
+## Sovereign Governance & Engineering Standards
+
+The foundational doctrine, thermodynamic invariants, and zero-knowledge capability proof standards governing this repository are codified in the canonical charter:
+
+- 📜 **[The Epistemic Elevation Charter](CHARTER.md)** (`ARC-CHARTER-2026-ELEV01`)  
+  *Sovereign Standards for High-Consequence Computation & Machine-Verified Engineering*  
+  - **Canon I (Thermodynamic Grounding):** Static memory bounds ($M_{\text{alloc}} = 0$, $S_{\max} \le 4096\text{ B}$) and cycle-accurate temporal clamping ($\tau_{\text{override}} \le 11.99\text{ ms}$).
+  - **Canon II (Constructive Verification):** Complete elimination of unearned authority and unproven lemmas (`Print Assumptions` $\equiv \emptyset$, `POSIX HALT 0`).
+  - **Canon III (The Fail-Closed Membrane):** Actuator airlock enforcement where denial guarantees absolute state conservation ($\mathcal{D}(a) = \text{DENY} \implies \Delta_{\text{external}}(a) = 0$).
+  - **Canon IV (Functorial Order Dynamics):** 5-element join-semilattice mapping into kernel-level POSIX execution precedence ($40 \succ 32 \succ 30 \succ 12 \succ 0$).
+  - **Canon V (Artifact-Bound Assurance):** Zero-knowledge capability proofs ($\pi_{\text{DAE}}$) and zero operational maintenance overhead ($C_{\text{ops}} = 0$).
+
+---
+
 ## The 4-Tier Credential Assurance Model
 
 1. **ACS-1 (Specification Schemas):** Syntactic adherence to domain schemas (`schema/*_pedagogy.json`), governing problem formulation, unit conventions, and physical/operational bounds.
@@ -78,6 +92,7 @@ autodidactic-credential-sovereignty/
 ├── AGENTS.md                        # Pedagogical AI agent ingress guardrails
 ├── LIMITATIONS.md                   # Formal trust boundary & TCB documentation
 ├── llms.txt                         # Machine-readable context file
+├── CHARTER.md                       # The Epistemic Elevation Charter
 └── README.md
 ```
 
