@@ -1,3 +1,4 @@
+
 # Autodidactic Credential Sovereignty (ACS)
 ### Sovereign, High-Assurance Technical Credentialing Substrate
 
@@ -44,3 +45,66 @@ autodidactic-credential-sovereignty/
 ├── AGENTS.md                        # Pedagogical AI agent ingress guardrails
 ├── llms.txt                         # Structured machine-readable substrate context
 └── README.md
+```
+
+## Quickstart & Local Verification
+
+### Prerequisites
+
+- **Rust Toolchain:** `rustup default stable` (targets: `thumbv7em-none-eabihf`, `x86_64-unknown-none`)
+- **Coq Proof Checker:** `coqc` 8.16+ (with `Coq.micromega.Lia` support)
+
+### Running Verifications Locally
+
+1. **Verify All Formal Proofs (ACS-3):**
+
+   ```bash
+   coqc proofs/dae_invariants.v
+   coqc domains/quant-finance/proofs/quant_invariants.v
+   coqc domains/aerospace-avionics/proofs/avionics_invariants.v
+   coqc domains/crypto-protocols/proofs/crypto_invariants.v
+   ```
+
+2. **Run Bare-Metal Execution Harnesses (ACS-2):**
+
+   ```bash
+   cargo test --manifest-path harness/Cargo.toml --release
+   cargo test --manifest-path domains/quant-finance/harness/Cargo.toml --release
+   cargo test --manifest-path domains/aerospace-avionics/harness/Cargo.toml --release
+   cargo test --manifest-path domains/crypto-protocols/harness/Cargo.toml --release
+   ```
+
+## Onboarding a New Domain Suite
+
+To add a 5th engineering domain (e.g., `biomedical-telemetry`, `robotics-kinematics`, or `satellite-constellations`):
+
+1. **Create the Domain Directory Structure:**
+
+   ```bash
+   mkdir -p domains/<domain-name>/{harness/src,proofs,schema}
+   ```
+
+2. **Define the Pedagogy Schema (`ACS-1`):**
+
+   Create `domains/<domain-name>/schema/<domain>_pedagogy.json` defining domain-specific invariant thresholds, bounded variables, and failure categories.
+
+3. **Formulate Formal Proofs (`ACS-3`):**
+
+   Write `domains/<domain-name>/proofs/<domain>_invariants.v`. Ensure every invariant theorem is discharged without `Admitted.` or `Axiom`.
+
+4. **Implement Bare-Metal Harness (`ACS-2`):**
+
+   Add a `Cargo.toml` and `#![no_std]` `src/lib.rs` under `domains/<domain-name>/harness/`. Implement positive and boundary tests for each failure mode.
+
+5. **Register Domain in CI Autograder:**
+
+   Append the compilation and test step to `.github/workflows/substrate-ci.yml`:
+
+   ```yaml
+   - name: Verify <Domain Name> Domain
+     run: |
+       coqc domains/<domain-name>/proofs/<domain>_invariants.v
+       cargo test --manifest-path domains/<domain-name>/harness/Cargo.toml --release
+   ```
+
+6. **Commit & Push:** Submit a branch or push to `main` to trigger verification across the entire suite.
