@@ -5,6 +5,7 @@
 > Operating Paradigm: C_ops == 0 | tau_override <= 11.99ms | M_alloc == 0 | S_max <= 4096B
 > Normative Specification: /SPECIFICATION.md
 > Operational Doctrine & Charter: /CHARTER.md
+> Trust Boundaries & Disclosures: /LIMITATIONS.md
 
 ## Core Repositories & Specifications
 - Canonical Charter: ARC-CHARTER-2026-ELEV01 (/CHARTER.md)
@@ -18,3 +19,10 @@
 - 5-Element Pre-Ingress Lattice: POSIX 40 (BREACH) > POSIX 32 (REFUSAL) > POSIX 30 (CORRUPT) > POSIX 12 (PWC) > POSIX 0 (PASS)
 - Endofunctorial Yield Invariant: POSIX 10 (FREEZE) operates strictly as an internal runtime scheduling yield in E (tau_override <= 11.99ms) outside the essential image Im(Phi).
 - Four-Tier Model: ACS-1 (Schemas) -> ACS-2 (#![no_std] Harness) -> ACS-3 (Coq Transition Proofs) -> ACS-4 (Circom Groth16 ZK)
+- Assurance Doctrine: Constrained Realization by Design (/LIMITATIONS.md) enforcing physical boundary containment over recursive compiler extraction at C_ops = 0.
+
+## Mechanical Verification Targets
+- Formal Proofs (ACS-3): proofs/dae_invariants.v, domains/*/proofs/ (coqc verified, Print Assumptions ≡ ∅)
+- Execution Harnesses (ACS-2): harness/, domains/*/harness/ (cargo test --release, #[no_std], zero alloc)
+- Zero-Knowledge Circuits (ACS-4): zk/dae_verifier.circom (circom 2.1.6, Groth16 R1CS constraints)
+- Pedagogical Schemas (ACS-1): schema/*_pedagogy.json, domains/*/schema/
